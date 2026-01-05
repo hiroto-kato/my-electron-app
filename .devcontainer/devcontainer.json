@@ -1,0 +1,15 @@
+{
+  "name": "my-electron-app",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "postCreateCommand": "npm install",
+  "runArgs": [
+    "-e", "DISPLAY",
+    "-e", "WAYLAND_DISPLAY",
+    "-e", "XDG_RUNTIME_DIR",
+    "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+    "-v", "/mnt/wslg:/mnt/wslg"    
+  ],
+  "remoteUser": "node"
+}
