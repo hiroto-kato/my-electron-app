@@ -1,6 +1,6 @@
 FROM node:22-bookworm
 
-# ===== Electron 実行に必要なライブラリ =====
+# ===== Necessary Libraries for Electron Execution =====
 RUN apt-get update && apt-get install -y \
     # SSL / HTTPS
     ca-certificates \
@@ -21,12 +21,17 @@ RUN apt-get update && apt-get install -y \
     libasound2 \
     libgtk-3-0 \
     \
-    # フォント（文字化け防止）
+    # Electron Forge
+    dpkg \
+    fakeroot \
+    rpm \
+    \
+    # Font (Avoiding garbled text)
     fonts-liberation \
     fonts-noto-cjk \
     fonts-noto-color-emoji \
     \
-    # デバッグ用（任意）
+    # For debugging
     xdg-utils \
     \
     && update-ca-certificates \
@@ -35,8 +40,8 @@ RUN apt-get update && apt-get install -y \
 # ===== Stability of Electron Download=====
 ENV ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
 
-# ===== 開発用 =====
+# ===== Development =====
 # WORKDIR /workspaces/app
 
-# node ユーザーで実行（devcontainer標準）
+# node user (devcontainer standard)
 USER node
