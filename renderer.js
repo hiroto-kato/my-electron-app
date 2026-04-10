@@ -6,5 +6,4 @@ const func = async () => {
   console.log(response)
 }
 
-console.log("test")
 func()
